@@ -1,11 +1,5 @@
 /*
  	Name: [EODS] EXPLOSIVE ORDNANCE DISPOSAL SUITE
- 	
- 	Author(s): Monovdd (Carlos Alberto Arango Schütz)
-
- 	Note: Do not modify this file without permission.
-	
-	Licence: http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
 FNC_EODS_HIDDEN_OCULTAR = {
@@ -16,19 +10,19 @@ _ied = _this select 0;
 
 	switch (typeOf _ied) do {
 
-   		case "EODS_ied01": {_tipoDeTierra = "EODS_tierra01_ied01";};
+   		case "EODS_ied01_armed": {_tipoDeTierra = "EODS_tierra01_ied01"};
 
-   		case "EODS_ied02": {_tipoDeTierra = "EODS_tierra01_ied02";};
+   		case "EODS_ied02_armed": {_tipoDeTierra = "EODS_tierra01_ied02"};
 
-   		case "EODS_ied03": {_tipoDeTierra = "EODS_tierra01_ied03";};
+   		case "EODS_ied03_armed": {_tipoDeTierra = "EODS_tierra01_ied03"};
 
-   		case "EODS_ied04": {_tipoDeTierra = "EODS_tierra01_ied04";};
+   		case "EODS_ied04_armed": {_tipoDeTierra = "EODS_tierra01_ied04"};
 
-   		case "EODS_ied05": {_tipoDeTierra = "EODS_tierra01_ied02";};
+   		case "EODS_ied05_armed": {_tipoDeTierra = "EODS_tierra01_ied02"};
 
-   		case "EODS_ied06": {_tipoDeTierra = "EODS_tierra01_ied03";};
+   		case "EODS_ied06_armed": {_tipoDeTierra = "EODS_tierra01_ied03"};
 
-   		case "EODS_ied07": {_tipoDeTierra = "EODS_tierra01_ied04";};
+   		case "EODS_ied07_armed": {_tipoDeTierra = "EODS_tierra01_ied04"};
 	};
 
 _posicion = position _ied;
