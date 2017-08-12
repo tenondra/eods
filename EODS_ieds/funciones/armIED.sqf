@@ -1,9 +1,8 @@
-if(!isServer) exitwith {};
-_RND_number = 2;
 
-if (isServer) then  {
+
+//if (isServer) then  {
 	_RND_number = Ceil random 3;
-	};
+//	};
 	
 if(!isServer) exitwith {};
 
@@ -24,9 +23,9 @@ call compile preprocessFileLineNumbers "EODS_ieds\funciones\HIDDEN_IEDS\EODS_HID
 
 //the passed ied
 _ied = _this select 0; 
-_RND_number = _this select 1;
-_iedtype = ["Land_GarbagePallet_F","Land_CanisterFuel_F","Land_GarbageWashingMachine_F","Land_JunkPile_F","Land_CanisterPlastic_F","Land_Tyres_F","Land_GarbageBags_F","Land_Wreck_Truck_F","C_Offroad_01_F","C_Van_01_transport_F","C_Hatchback_01_F","LADAWreck","HMMWVWreck","UAZWreck"]; call BIS_fnc_selectRandom;
-_triggerman =  ["TBan_Fighter6","TBan_Fighter5","TBan_Fighter4","TBan_Fighter3NH","TBan_Fighter2NH","TBan_Fighter1NH","TBan_Fighter3","TBan_Fighter2","TBan_Fighter1","TBan_Recruit6","TBan_Recruit6NH","TBan_Recruit5","TBan_Recruit4","TBan_Recruit3NH","TBan_Recruit3","TBan_Recruit2NH","TBan_Recruit2","TBan_Recruit1",] call BIS_fnc_selectRandom;
+//_RND_number = _this select 1;
+_iedtype = ["Land_GarbagePallet_F","Land_CanisterFuel_F","Land_GarbageWashingMachine_F","Land_JunkPile_F","Land_CanisterPlastic_F","Land_Tyres_F","Land_GarbageBags_F","Land_Wreck_Truck_F","C_Offroad_01_F","C_Van_01_transport_F","C_Hatchback_01_F","LADAWreck","HMMWVWreck","UAZWreck"] call BIS_fnc_selectRandom;
+_triggerman =  ["B_G_Survivor_F","C_man_p_beggar_F"] call BIS_fnc_selectRandom;
 
 //arming and unhiding its battery/detonatornator
 _ied setVariable ["EODS_Ieds_STATUS_ARMADO", true, true];
@@ -42,9 +41,9 @@ _ied setVariable ["EODS_Ieds_STATUS_ARMADO", true, true];
 			
 			//creating triggerman
 			_bomberGroup = createGroup east;
-			_bomber = _bomberGroup createUnit [_triggerman, Position _ied, [], 100, "FORM"];
+			_bomber = _bomberGroup createUnit [_triggerman, position _ied, [], 100, "FORM"];
 			
-				_removeAllWeapons _bomber;
+				removeAllWeapons _bomber;
 			
 				_bomber addItem "EODS_cellphone_02";
 
