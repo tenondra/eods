@@ -38,9 +38,8 @@ class CfgPatches
 		weapons[] = {"EODS_cellphone_02","EODS_inventario_ied_01","EODS_inventario_ied_02","EODS_inventario_ied_03","EODS_inventario_ied_04","EODS_inventario_ied_05","EODS_inventario_ied_06","EODS_inventario_ied_07","EODS_Uxo_01_Inv","EODS_inventario_ied_B_PressurePlate","EODS_inventario_122mm_USSR_IED","EODS_inventario_Water_Container_IED","EODS_inventario_FuelCan_IED","EODS_inventario_122mm_USSR_IED_PP"};
 		requiredVersion = 1;
 		requiredAddons[] = {"CBA_XEH","CBA_MAIN","A3_UI_F"};
-		//author = "Carlos A. Arango S. | Monovdd","MrEwok";
-		//versionDesc = "[EODS] 0.0.1";
-		//version = "0.0.1";
+		versionDesc = "[EODS] 0.0.1";
+		version = "0.0.1";
 		magazines[] = {};
 		ammo[] = {};
 	};
@@ -871,7 +870,7 @@ class EODS_IEDS_MENU_CELULAR
 	class EODS_IEDS_CELULAR_Edit_1401: EODS_Text
 	{
 		idc = 1401;
-		text = "EODS_ieds_Celular_Guardar";
+		text = "$STR_EODS_ieds_Celular_Guardar";
 		x = "0.459301 * safezoneW + safezoneX";
 		y = "0.425458 * safezoneH + safezoneY";
 		w = "0.0458333 * safezoneW";
@@ -882,7 +881,7 @@ class EODS_IEDS_MENU_CELULAR
 	class EODS_IEDS_CELULAR_Edit_1402: EODS_Text
 	{
 		idc = 1402;
-		text = "EODS_ieds_Celular_Agenda";
+		text = "$STR_EODS_ieds_Celular_Agenda";
 		x = "0.499182 * safezoneW + safezoneX";
 		y = "0.425458 * safezoneH + safezoneY";
 		w = "0.0458333 * safezoneW";
@@ -968,7 +967,7 @@ class EODS_IEDS_MENU_PRINCIPAL
 		class EODS_IEDS_Text_1000: EODS_Text
 		{
 			idc = 21;
-			text = "EODS_ieds_titulo_struct";
+			text = "$STR_EODS_ieds_titulo_struct";
 			x = "0.396875 * safezoneW + safezoneX";
 			y = "0.599109 * safezoneH + safezoneY";
 			w = "0.20625 * safezoneW";
@@ -1361,7 +1360,7 @@ class cfgVehicles
 		author = "Monovdd";
 		_generalMacro = "EODS_ied01";
 		scope = 2;
-		displayName = "EODS_ieds_ied01";
+		displayName = "$STR_EODS_ieds_ied01";
 		model = "EODS_ieds\meshes\ied01.p3d";
 		vehicleClass = "EODS_ied_class";
 		picture = "\EODS_ieds\data\ied01_menu.paa";
@@ -1379,7 +1378,7 @@ class cfgVehicles
 	
 	class EODS_ied01_armed: EODS_ied01
 	{
-		displayName = "EODS_ieds_ied01_armed";
+		displayName = "$STR_EODS_ieds_ied01_armed";
 		class Eventhandlers
 		{
 			
@@ -1393,7 +1392,7 @@ class cfgVehicles
 		author = "Monovdd";
 		_generalMacro = "EODS_ied02";
 		scope = 2;
-		displayName = "EODS_ieds_ied02";
+		displayName = "$STR_EODS_ieds_ied02";
 		model = "EODS_ieds\meshes\ied02.p3d";
 		vehicleClass = "EODS_ied_class";
 		picture = "\EODS_ieds\data\ied02_menu.paa";
@@ -1411,7 +1410,7 @@ class cfgVehicles
 	
 	class EODS_ied02_armed: EODS_ied02
 	{
-		displayName = "EODS_ieds_ied02_armed";
+		displayName = "$STR_EODS_ieds_ied02_armed";
 		class Eventhandlers
 		{
 			
@@ -1425,7 +1424,7 @@ class cfgVehicles
 		author = "Monovdd";
 		_generalMacro = "EODS_ied03";
 		scope = 2;
-		displayName = "EODS_ieds_ied03";
+		displayName = "$STR_EODS_ieds_ied03";
 		model = "EODS_ieds\meshes\ied03.p3d";
 		vehicleClass = "EODS_ied_class";
 		picture = "\EODS_ieds\data\ied03_menu.paa";
@@ -1443,7 +1442,7 @@ class cfgVehicles
 	
 	class EODS_ied03_armed: EODS_ied03
 	{
-		displayName = "EODS_ieds_ied03_armed";
+		displayName = "$STR_EODS_ieds_ied03_armed";
 		class Eventhandlers
 		{
 			
@@ -1457,7 +1456,7 @@ class cfgVehicles
 		author = "Monovdd";
 		_generalMacro = "EODS_ied04";
 		scope = 2;
-		displayName = "EODS_ieds_ied04";
+		displayName = "$STR_EODS_ieds_ied04";
 		model = "EODS_ieds\meshes\ied04.p3d";
 		vehicleClass = "EODS_ied_class";
 		picture = "\EODS_ieds\data\ied04_menu.paa";
@@ -1475,7 +1474,7 @@ class cfgVehicles
 	
 	class EODS_ied04_armed: EODS_ied04
 	{
-		displayName = "EODS_ieds_ied04_armed";
+		displayName = "$STR_EODS_ieds_ied04_armed";
 		class Eventhandlers
 		{
 			
@@ -1489,7 +1488,7 @@ class cfgVehicles
 		author = "Monovdd";
 		_generalMacro = "EODS_ied05";
 		scope = 2;
-		displayName = "EODS_ieds_ied05";
+		displayName = "$STR_EODS_ieds_ied05";
 		model = "EODS_ieds\meshes\EWK_ied01.p3d";
 		vehicleClass = "EODS_ied_class";
 		picture = "\EODS_ieds\data\ied05_menu.paa";
@@ -1507,7 +1506,7 @@ class cfgVehicles
 	
 	class EODS_ied05_armed: EODS_ied05
 	{
-		displayName = "EODS_ieds_ied05_armed";
+		displayName = "$STR_EODS_ieds_ied05_armed";
 		class Eventhandlers
 		{
 			
@@ -1521,7 +1520,7 @@ class cfgVehicles
 		author = "Monovdd";
 		_generalMacro = "EODS_ied06";
 		scope = 2;
-		displayName = "EODS_ieds_ied06";
+		displayName = "$STR_EODS_ieds_ied06";
 		model = "EODS_ieds\meshes\EWK_ied02.p3d";
 		vehicleClass = "EODS_ied_class";
 		picture = "\EODS_ieds\data\ied06_menu.paa";
@@ -1539,7 +1538,7 @@ class cfgVehicles
 	
 	class EODS_ied06_armed: EODS_ied06
 	{
-		displayName = "EODS_ieds_ied06_armed";
+		displayName = "$STR_EODS_ieds_ied06_armed";
 		class Eventhandlers
 		{
 			
@@ -1553,7 +1552,7 @@ class cfgVehicles
 		author = "Monovdd";
 		_generalMacro = "EODS_ied07";
 		scope = 2;
-		displayName = "EODS_ieds_ied07";
+		displayName = "$STR_EODS_ieds_ied07";
 		model = "EODS_ieds\meshes\EWK_ied03.p3d";
 		vehicleClass = "EODS_ied_class";
 		picture = "\EODS_ieds\data\ied07_menu.paa";
@@ -1571,7 +1570,7 @@ class cfgVehicles
 	
 	class EODS_ied07_armed: EODS_ied07
 	{
-		displayName = "EODS_ieds_ied07_armed";
+		displayName = "$STR_EODS_ieds_ied07_armed";
 		class Eventhandlers
 		{
 			
@@ -1584,7 +1583,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "Monovdd";
 		_generalMacro = "EODS_122mm_USSR_RCIED";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS_122mm_USSR_RCIED";
 		model = "EODS_ieds\meshes\122mm_USSR_IED.p3d";
 		vehicleClass = "EODS_ied_class";
@@ -1605,7 +1604,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "EODS_Water_Container_IED";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS Water Container IED";
 		model = "\EODS_ieds\meshes\WaterBomb.p3d";
 		vehicleClass = "EODS_ied_class";
@@ -1634,7 +1633,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "EODS_FuelCan_IED";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS FuelCan IED";
 		model = "\EODS_ieds\meshes\FuelCan.p3d";
 		vehicleClass = "EODS_ied_class";
@@ -1663,7 +1662,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "EODS_122mm_USSR_IED_PP";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS 122mm_USSR_IED_PP";
 		model = "\EODS_ieds\meshes\122mm_USSR_IED_PP.p3d";
 		vehicleClass = "EODS_ied_class";
@@ -1692,7 +1691,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "ied_B_PressurePlate";
-		scope = 2;
+		scope = 0;
 		displayName = "ied_B_PressurePlate";
 		model = "EODS_ieds\meshes\Ied_PP01.p3d";
 		vehicleClass = "EODS_ied_class";
@@ -1720,7 +1719,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "EODS_FertilizerBag";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS FertilizerBag";
 		model = "\EODS_ieds\meshes\FertilizerBag.p3d";
 		icon = "iconObject";
@@ -1734,7 +1733,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "EODS_FertilizerBag2_Pile";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS_FertilizerBag2_Pile";
 		model = "\EODS_ieds\meshes\FertilizerBag2Pile.p3d";
 		icon = "iconObject";
@@ -1748,7 +1747,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "EODS_FertilizerBag3_Pile";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS_FertilizerBag3_Pile";
 		model = "\EODS_ieds\meshes\FertilizerBag3Pile.p3d";
 		icon = "iconObject";
@@ -1762,7 +1761,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "FertilizerBag2And3Pile";
-		scope = 2;
+		scope = 0;
 		displayName = "FertilizerBag2And3Pile";
 		model = "\EODS_ieds\meshes\FertilizerBag2And3Pile.p3d";
 		icon = "iconObject";
@@ -1776,7 +1775,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "EODS_CocaCan";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS SodaCan (coca)";
 		model = "\EODS_ieds\meshes\CocaCan.p3d";
 		icon = "iconObject";
@@ -1790,7 +1789,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "EODS_Bullet_Case_Detonator";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS Bullet_Case_Detonator";
 		model = "\EODS_ieds\meshes\Bullet_Case_Detonator.p3d";
 		icon = "iconObject";
@@ -1804,7 +1803,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "EODS_wire_spool";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS wire_spool";
 		model = "\EODS_ieds\meshes\wire_spool.p3d";
 		icon = "iconObject";
@@ -1818,7 +1817,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "EODS_Water_Container";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS Water Container";
 		model = "\EODS_ieds\meshes\WaterContainer.p3d";
 		icon = "iconObject";
@@ -1832,7 +1831,7 @@ class cfgVehicles
 		mapSize = 1;
 		author = "MrEwok";
 		_generalMacro = "EODS_Water_Container2";
-		scope = 2;
+		scope = 0;
 		displayName = "EODS Water Container2";
 		model = "\EODS_ieds\meshes\WaterContainer2.p3d";
 		icon = "iconObject";
@@ -1857,7 +1856,7 @@ class cfgVehicles
 		class DestructionEffects{};
 		class Eventhandlers
 		{
-			init = "if (isserver) then {_ok = _this execVM '\EODS_ieds\funciones\GENERAL\EODS_TIERRA_INIT.sqf';};";
+			init = "if (isServer) then {_ok = _this execVM '\EODS_ieds\funciones\GENERAL\EODS_TIERRA_INIT.sqf';};";
 		};
 	};
 	class EODS_tierra01_ied01: EODS_tierra_base
@@ -1865,7 +1864,7 @@ class cfgVehicles
 		mapSize = 1;
 		_generalMacro = "EODS_tierra01_ied01";
 		scope = 1;
-		displayName = "EODS_Fake_IED_01";
+		displayName = "$STR_EODS_Fake_IED_01";
 		model = "EODS_ieds\meshes\tierra01_ied01.p3d";
 	};
 	class EODS_tierra02_ied01: EODS_tierra_base
@@ -1873,7 +1872,7 @@ class cfgVehicles
 		mapSize = 1;
 		_generalMacro = "EODS_tierra02_ied01";
 		scope = 1;
-		displayName = "EODS_Fake_IED_02";
+		displayName = "$STR_EODS_Fake_IED_02";
 		model = "EODS_ieds\meshes\tierra02_ied01.p3d";
 	};
 	class EODS_tierra01_ied02: EODS_tierra_base
@@ -1881,7 +1880,7 @@ class cfgVehicles
 		mapSize = 1;
 		_generalMacro = "EODS_tierra01_ied02";
 		scope = 1;
-		displayName = "EODS_Fake_IED_03";
+		displayName = "$STR_EODS_Fake_IED_03";
 		model = "EODS_ieds\meshes\tierra01_ied02.p3d";
 	};
 	class EODS_tierra02_ied02: EODS_tierra_base
@@ -1889,7 +1888,7 @@ class cfgVehicles
 		mapSize = 1;
 		_generalMacro = "EODS_tierra02_ied02";
 		scope = 1;
-		displayName = "EODS_Fake_IED_04";
+		displayName = "$STR_EODS_Fake_IED_04";
 		model = "EODS_ieds\meshes\tierra02_ied02.p3d";
 	};
 	class EODS_tierra01_ied03: EODS_tierra_base
@@ -1897,7 +1896,7 @@ class cfgVehicles
 		mapSize = 1;
 		_generalMacro = "EODS_tierra01_ied03";
 		scope = 1;
-		displayName = "EODS_Fake_IED_05";
+		displayName = "$STR_EODS_Fake_IED_05";
 		model = "EODS_ieds\meshes\tierra01_ied03.p3d";
 	};
 	class EODS_tierra02_ied03: EODS_tierra_base
@@ -1905,7 +1904,7 @@ class cfgVehicles
 		mapSize = 1;
 		_generalMacro = "EODS_tierra02_ied03";
 		scope = 1;
-		displayName = "EODS_Fake_IED_06";
+		displayName = "$STR_EODS_Fake_IED_06";
 		model = "EODS_ieds\meshes\tierra02_ied03.p3d";
 	};
 	class EODS_tierra01_ied04: EODS_tierra_base
@@ -1913,7 +1912,7 @@ class cfgVehicles
 		mapSize = 1;
 		_generalMacro = "EODS_tierra01_ied04";
 		scope = 1;
-		displayName = "EODS_Fake_IED_07";
+		displayName = "$STR_EODS_Fake_IED_07";
 		model = "EODS_ieds\meshes\tierra01_ied04.p3d";
 	};
 	class EODS_tierra02_ied04: EODS_tierra_base
@@ -1921,7 +1920,7 @@ class cfgVehicles
 		mapSize = 1;
 		_generalMacro = "EODS_tierra02_ied04";
 		scope = 1;
-		displayName = "EODS_Fake_IED_08";
+		displayName = "$STR_EODS_Fake_IED_08";
 		model = "EODS_ieds\meshes\tierra02_ied04.p3d";
 	};
 	class Logic;
@@ -1942,7 +1941,7 @@ class cfgVehicles
 		scope = 2;
 		category = "EODS_ieds_modules";
 		side = 7;
-		displayName = "EODS_ieds_modulos_HIDDEN_IN_OBJECT";
+		displayName = "$STR_EODS_ieds_modulos_HIDDEN_IN_OBJECT";
 		IEmodICON_Module = "\EODS_ieds\data\EODS_modulo_hidden_icon.paa";
 		picture = "\EODS_ieds\data\EODS_modulo_hidden_icon.paa";
 		icon = "\EODS_ieds\data\EODS_modulo_hidden_icon.paa";
@@ -1958,7 +1957,7 @@ class cfgVehicles
 		};
 		class Eventhandlers
 		{
-			init = "if (isserver) then {_ok = _this execVM '\EODS_ieds\funciones\HIDDEN_IEDS\EODS_HIDDEN_OBJECT_INIT.sqf';};";
+			init = "if (isServer) then {_ok = _this execVM '\EODS_ieds\funciones\HIDDEN_IEDS\EODS_HIDDEN_OBJECT_INIT.sqf';};";
 		};
 	};
 	class EODS_IED_CELLPHONE_MODULE: Module_F
@@ -1967,7 +1966,7 @@ class cfgVehicles
 		scope = 2;
 		category = "EODS_ieds_modules";
 		side = 7;
-		displayName = "EODS_ieds_modulos_CA";
+		displayName = "$STR_EODS_ieds_modulos_CA";
 		IEmodICON_Module = "\EODS_ieds\data\EODS_modulo_IED_CA_icon.paa";
 		picture = "\EODS_ieds\data\EODS_modulo_IED_CA_icon.paa";
 		icon = "\EODS_ieds\data\EODS_modulo_IED_CA_icon.paa";
@@ -1983,7 +1982,7 @@ class cfgVehicles
 		};
 		class Eventhandlers
 		{
-			init = "if (isserver) then {_ok = _this execVM '\EODS_ieds\funciones\IED_CA\EODS_CA_INIT.sqf';};";
+			init = "if (isServer) then {_ok = _this execVM '\EODS_ieds\funciones\IED_CA\EODS_CA_INIT.sqf';};";
 		};
 	};
 	class EODS_IED_HIDDEN_MODULE: Module_F
@@ -1992,7 +1991,7 @@ class cfgVehicles
 		scope = 2;
 		category = "EODS_ieds_modules";
 		side = 7;
-		displayName = "EODS_ieds_modulos_HIDDEN";
+		displayName = "$STR_EODS_ieds_modulos_HIDDEN";
 		IEmodICON_Module = "\EODS_ieds\data\EODS_modulo_bury_icon.paa";
 		picture = "\EODS_ieds\data\EODS_modulo_bury_icon.paa";
 		icon = "\EODS_ieds\data\EODS_modulo_bury_icon.paa";
@@ -2008,7 +2007,7 @@ class cfgVehicles
 		};
 		class Eventhandlers
 		{
-			init = "if (isserver) then {_ok = _this execVM '\EODS_ieds\funciones\HIDDEN_IEDS\EODS_HIDDEN_INIT.sqf';};";
+			init = "if (isServer) then {_ok = _this execVM '\EODS_ieds\funciones\HIDDEN_IEDS\EODS_HIDDEN_INIT.sqf';};";
 		};
 	};
 	class EODS_IED_CADENA_MODULE: Module_F
@@ -2017,7 +2016,7 @@ class cfgVehicles
 		scope = 2;
 		category = "EODS_ieds_modules";
 		side = 7;
-		displayName = "EODS_ieds_modulos_CADENA";
+		displayName = "$STR_EODS_ieds_modulos_CADENA";
 		IEmodICON_Module = "\EODS_ieds\data\EODS_modulo_Encadenar_icon.paa";
 		picture = "\EODS_ieds\data\EODS_modulo_Encadenar_icon.paa";
 		icon = "\EODS_ieds\data\EODS_modulo_Encadenar_icon.paa";
@@ -2033,7 +2032,7 @@ class cfgVehicles
 		};
 		class Eventhandlers
 		{
-			init = "if (isserver) then {_ok = _this execVM '\EODS_ieds\funciones\CADENA\EODS_CADENA_INIT.sqf';};";
+			init = "if (isServer) then {_ok = _this execVM '\EODS_ieds\funciones\CADENA\EODS_CADENA_INIT.sqf';};";
 		};
 	};
 	class EODS_IED_ARMAR_MODULE: Module_F
@@ -2042,7 +2041,7 @@ class cfgVehicles
 		scope = 2;
 		category = "EODS_ieds_modules";
 		side = 7;
-		displayName = "EODS_ieds_modulos_ARMAR";
+		displayName = "$STR_EODS_ieds_modulos_ARMAR";
 		IEmodICON_Module = "\EODS_ieds\data\EODS_modulo_Armar_icon.paa";
 		picture = "\EODS_ieds\data\EODS_modulo_Armar_icon.paa";
 		icon = "\EODS_ieds\data\EODS_modulo_Armar_icon.paa";
@@ -2058,7 +2057,7 @@ class cfgVehicles
 		};
 		class Eventhandlers
 		{
-			init = "if (isserver) then {_ok = _this execVM '\EODS_ieds\funciones\ARMAR\EODS_ARMAR_INIT.sqf';};";
+			init = "if (isServer) then {_ok = _this execVM '\EODS_ieds\funciones\ARMAR\EODS_ARMAR_INIT.sqf';};";
 		};
 	};
 };
@@ -2078,7 +2077,7 @@ class CfgWeapons
 	class EODS_cellphone_02: EODS_item_general
 	{
 		scope = 2;
-		displayName = "EODS_ieds_celuar";
+		displayName = "$STR_EODS_ieds_celuar";
 		class ItemInfo
 		{
 			mass = 1;
@@ -2104,7 +2103,7 @@ class CfgWeapons
 	class EODS_inventario_ied_01: EODS_item_general
 	{
 		scope = 2;
-		displayName = "EODS_ieds_ied01";
+		displayName = "$STR_EODS_ieds_ied01";
 		class ItemInfo
 		{
 			mass = 70;
@@ -2117,7 +2116,7 @@ class CfgWeapons
 	class EODS_inventario_ied_02: EODS_item_general
 	{
 		scope = 2;
-		displayName = "EODS_ieds_ied02";
+		displayName = "$STR_EODS_ieds_ied02";
 		class ItemInfo
 		{
 			mass = 90;
@@ -2130,7 +2129,7 @@ class CfgWeapons
 	class EODS_inventario_ied_03: EODS_item_general
 	{
 		scope = 2;
-		displayName = "EODS_ieds_ied03";
+		displayName = "$STR_EODS_ieds_ied03";
 		class ItemInfo
 		{
 			mass = 120;
@@ -2143,7 +2142,7 @@ class CfgWeapons
 	class EODS_inventario_ied_04: EODS_item_general
 	{
 		scope = 2;
-		displayName = "EODS_ieds_ied04";
+		displayName = "$STR_EODS_ieds_ied04";
 		class ItemInfo
 		{
 			mass = 30;
@@ -2156,7 +2155,7 @@ class CfgWeapons
 	class EODS_inventario_ied_05: EODS_item_general
 	{
 		scope = 2;
-		displayName = "EODS_ieds_ied05";
+		displayName = "$STR_EODS_ieds_ied05";
 		class ItemInfo
 		{
 			mass = 70;
@@ -2169,7 +2168,7 @@ class CfgWeapons
 	class EODS_inventario_ied_06: EODS_item_general
 	{
 		scope = 2;
-		displayName = "EODS_ieds_ied06";
+		displayName = "$STR_EODS_ieds_ied06";
 		class ItemInfo
 		{
 			mass = 120;
@@ -2182,7 +2181,7 @@ class CfgWeapons
 	class EODS_inventario_ied_07: EODS_item_general
 	{
 		scope = 2;
-		displayName = "EODS_ieds_ied07";
+		displayName = "$STR_EODS_ieds_ied07";
 		class ItemInfo
 		{
 			mass = 30;
