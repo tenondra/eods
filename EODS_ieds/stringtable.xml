@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Project name="Arma3">
 <Package name="EODS_ieds">
 <Container name="STR_DN">
@@ -207,6 +207,48 @@
 		<French>Pipe Shaped Charge</French>	
       </Key>
 
+	  <Key ID="STR_EODS_ieds_ied01_armed">
+        <English>120mm RCIED armed</English>
+        <Spanish>RCIED de 120mm armed</Spanish>
+		<French>120mm RCIED armed</French>
+      </Key>
+
+      <Key ID="STR_EODS_ieds_ied02_armed">
+        <English>152mm RCIED armed</English>
+        <Spanish>RCIED de 152mm armed</Spanish>
+		<French>152mm RCIED armed</French>
+      </Key>
+
+      <Key ID="STR_EODS_ieds_ied03_armed">
+        <English>130mm Double RCIED armed</English>
+        <Spanish>RCIED Doble de 130mm armed</Spanish>
+		<French>130mm Double RCIED armed</French>
+      </Key>
+
+      <Key ID="STR_EODS_ieds_ied04_armed">
+        <English>RCIED Pipe Bomb armed</English>
+        <Spanish>Bomba de Tubo RCIED armed</Spanish>
+		<French>RCIED Pipe Bomb armed</French>
+      </Key>
+
+      <Key ID="STR_EODS_ieds_ied05_armed">
+        <English>122mm RCIED armed</English>
+        <Spanish>RCIED de 122mm armed</Spanish>
+		<French>122mm RCIED armed</French>
+      </Key>
+
+      <Key ID="STR_EODS_ieds_ied06_armed">
+        <English>RCIED Propane Tank armed</English>
+        <Spanish>Tanque de Propano RCIED armed</Spanish>
+		<French>Bouteille de Gaz armed</French>		
+      </Key>
+
+      <Key ID="STR_EODS_ieds_ied07_armed">
+        <English>Pipe Shaped Charge armed</English>
+        <Spanish>Bomba de Tubo Hueca RCIED armed</Spanish>
+		<French>Pipe Shaped Charge armed</French>	
+      </Key>
+	  
       <Key ID="STR_EODS_ieds_modulos_CA">
         <English>[EODS] IEDs Cellphone Activation [IA RCIED]</English>
         <Spanish>[EODS] Activacion de IEDs por celular [IA RCIED]</Spanish>
