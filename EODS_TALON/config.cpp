@@ -260,10 +260,10 @@ class cfgWeapons
 		picture = "\EODS_TALON\Remote\TexturesWIP\talonremoteUI_ca.paa";
 		model = "EODS_TALON\Remote\Control_RemoteV2UVTest.p3d";
 	};*/
-	
+
 
 	//UAV Object....
-	
+
 	class EODS_Talon_Remote_base: ItemCore
 	{
 		scope = 0;
@@ -287,21 +287,21 @@ class cfgWeapons
 		{
 			"Screen"
 		};
-		HiddenSelectionsTextures[] = 
+		HiddenSelectionsTextures[] =
 		{
 		};
 		class Eventhandlers
 		{
 			init = "_ok = _this execVM '\EODS_TALON\Remote\AddRemoteDetails.sqf'";
-		};		
+		};
 		class ItemInfo: ItemInfo
 		{
 			side = 1;
 		};
 	};
-	
+
 	// TALON REMOTE OBJECT STOP.....
-	
+
 	class FakeWeapon;
 	class TalonARM: FakeWeapon
 	{
@@ -438,7 +438,7 @@ class CfgVehicles
 		author = "MrEwok";
 		_generalMacro = "EWK_Talon_base";
 		accuracy=0.30000001;
-		maxSpeed=100;
+		maxSpeed=15;
 		attenuationEffectType="TankAttenuation";
 		insideSoundCoef=0.89999998;
 		soundGetIn[] = {"",0.56234133,1};
@@ -768,25 +768,33 @@ class CfgVehicles
 				volume = "engineOn*(1-camPos)*grass*((((-speed*3.6) max speed*3.6)/ 60) factor[(((-49) max 49)/ 60),(((-53) max 53)/ 60)])";
 			};
 		};
+		ace_cargo_size = 4;  // Cargo space the object takes
+		ace_cargo_canLoad = 1;  // Enables the object to be loaded (1-yes, 0-no)
+		ace_dragging_canDrag = 1;  // Can be dragged (0-no, 1-yes)
+		ace_dragging_dragPosition[] = {0, 1.2, 0};  // Offset of the model from the body while dragging (same as attachTo)
+		ace_dragging_dragDirection = 0;
 		simulation = "tankX";
-		enginePower = 5550;
-		maxOmega = 765;
-		peakTorque = 6700;
+		accelAidForceSpd = 0.5;
+		accelAidForceCoef = 0.4;
+		accelAidForceYOffset = -1.0;
+		enginePower = 100;
+		maxOmega = 60;
+		peakTorque = 700;
 		torqueCurve[] = {{ 0,0 },{ 0.14,1 },{ 0.29,0.91 },{ 0.43,0.91 },{ 0.57,0.91 },{ 0.71,0.91 },{ 0.86,0.87 },{ 1,0.85 }};
 		thrustDelay = 0.2;
-		clutchStrength = 185;
+		clutchStrength = 200;
 		fuelCapacity = 1900;
 		brakeIdleSpeed = 0.5;
-		switchTime = 0.31;
+		switchTime = 0.01;
 		latency = 0.45;
 		tankTurnForce = 150000;
 		idleRpm = 200;
-		redRpm = 7000;
+		redRpm = 6000;
 		engineLosses = 6;
 		transmissionLosses = 15;
 		class complexGearbox
 		{
-			GearboxRatios[] = {"R2",-5.9,"N",0,"D1",7.2,"D2",5.6,"D3",3.5,"D4",2.7,"D5",2.4,"D6",1.9,"D7",1.4,"D8",1.2};
+			GearboxRatios[] = {"R2",-5.9,"N",0,"D1",7.2};
 			TransmissionRatios[] = {"High",2};
 			gearBoxMode = "full-auto";
 			moveOffGear = 1;
@@ -1377,7 +1385,7 @@ class CfgVehicles
 						explosionShielding = 0.6;
 						radius = 0.25;
 						};
-						class HitGun	
+						class HitGun
 						{
 						armor = 0.3;
 						material = -1;
@@ -1423,7 +1431,7 @@ class CfgVehicles
 			{
 				//name = "EODS_Talon_Remote";
 				//count = 10;
-			};			
+			};
 		};
 	};
 	class ThingX;

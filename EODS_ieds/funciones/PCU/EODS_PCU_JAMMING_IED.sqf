@@ -1,10 +1,10 @@
 /*
  	Name: [EODS] EXPLOSIVE ORDNANCE DISPOSAL SUITE
- 	
- 	Author(s): Monovdd (Carlos Alberto Arango Schütz)
+
+ 	Author(s): Monovdd (Carlos Alberto Arango Schï¿½tz)
 
  	Note: Do not modify this file without permission.
-	
+
 	Licence: http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
@@ -23,12 +23,12 @@ private ["_jugador","_ied","_distancia","_calculoJammeoHecho","_probabilidad","_
 	_jammer = unitBackpack _jugador;
 
 	if (_jammer isKindOf "EODS_THORIII_SIN_ANTENA_BASE") then {_distancia = 0; _posibilidades = -1;};
-	
+
 	if (_jammer isKindOf "EODS_THORIII_LOW_BASE") then {_distancia = 800; _posibilidades = 1;};
 
 	if (_jammer isKindOf "EODS_THORIII_MID_BASE") then {_distancia = 600; _posibilidades = 3;};
 
-	if (_jammer isKindOf "EODS_THORIII_HIGH_BASE") then {_distancia = 200; _posibilidades = 5;};	
+	if (_jammer isKindOf "EODS_THORIII_HIGH_BASE") then {_distancia = 200; _posibilidades = 5;};
 
 	_idaccionJammer = _jugador addAction[_textoEstructuradoJammer, "EODS_IEDS_PCU_JAMMER_ACTIVO = false;",[], 1, false, true, "", ""];
 
@@ -42,8 +42,12 @@ while {EODS_IEDS_PCU_JAMMER_ACTIVO} do {
 
 	_posiblesJugadores = playableUnits;
 
-	_posiblesIEDs = nearestObjects [_jugador, ["EODS_base_ied_cellphone"], _distancia];
-	
+	//_posiblesIEDs = nearestObjects [_jugador, ["EODS_base_ied_cellphone"], _distancia];
+	_posiblesIEDs = _jugador nearObjects ["EODS_base_ied_cellphone", _distancia];
+	//Debug start
+	_textvar = str _posiblesIEDs;
+	_textvar remoteExec ["hint", 0];
+	//Debug end
 	if (count _posiblesIEDs > 0) then {
 
 		{
@@ -54,15 +58,15 @@ while {EODS_IEDS_PCU_JAMMER_ACTIVO} do {
 				_calculoJammeoHecho = false;
 			};
 
-			if (!_calculoJammeoHecho) then {		
+			if (!_calculoJammeoHecho) then {
 
 				_probabilidad = floor(random 9);
-	
+
 				if (_probabilidad <= _posibilidades) then {
 
 					_iedsJammeados = _iedsJammeados + [_x];
 
-					_x setVariable ["EODS_Ied_jammed", true, true];	
+					_x setVariable ["EODS_Ied_jammed", true, true];
 
 					_x setVariable ["EODS_Ied_calculo_jammeo_hecho", true, true];
 
@@ -86,7 +90,7 @@ while {EODS_IEDS_PCU_JAMMER_ACTIVO} do {
 
 				_iedsJammeados = _iedsJammeados - [_x];
 
-				_x setVariable ["EODS_Ied_jammed", false, true];	
+				_x setVariable ["EODS_Ied_jammed", false, true];
 
 				_x setVariable ["EODS_Ied_calculo_jammeo_hecho", false, true];
 
@@ -134,13 +138,13 @@ while {EODS_IEDS_PCU_JAMMER_ACTIVO} do {
 
 					//_x setVariable ["EODS_Ied_Radio_Jam", false, true];
 
-					_jugadoreJammeados = _jugadoreJammeados - [_x];					
+					_jugadoreJammeados = _jugadoreJammeados - [_x];
 				};
-			};			
+			};
 
 		} forEach _posiblesJugadores;
 
-	};	
+	};
 
 	sleep 0.5;
 };
@@ -150,7 +154,7 @@ if (count _iedsJammeados > 0) then {
 	{
 		_iedsJammeados = _iedsJammeados - [_x];
 
-		_x setVariable ["EODS_Ied_jammed", false, true];	
+		_x setVariable ["EODS_Ied_jammed", false, true];
 
 		_x setVariable ["EODS_Ied_calculo_jammeo_hecho", false, true];
 
@@ -166,7 +170,7 @@ if (count _jugadoreJammeados > 0) then {
 
 		//_x setVariable ["EODS_Ied_Radio_Jam", false, true];
 
-		_jugadoreJammeados = _jugadoreJammeados - [_x];	
+		_jugadoreJammeados = _jugadoreJammeados - [_x];
 
 	} forEach _jugadoreJammeados;
 };

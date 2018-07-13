@@ -8,6 +8,7 @@ private ["_ied","_tipoDeTierra","_nuevaTierra","_posicion","_dir"];
 
 _ied = _this select 0;
 
+
 	switch (typeOf _ied) do {
 
    		case "EODS_ied01_armed": {_tipoDeTierra = "EODS_tierra01_ied01"};
@@ -23,8 +24,13 @@ _ied = _this select 0;
    		case "EODS_ied06_armed": {_tipoDeTierra = "EODS_tierra01_ied03"};
 
    		case "EODS_ied07_armed": {_tipoDeTierra = "EODS_tierra01_ied04"};
-	};
 
+			default {_tipoDeTierra = "";};
+
+	};
+if (isNil _tipoDeTierra) exitWith {
+    
+};
 _posicion = position _ied;
 
 _nuevaTierra = createVehicle [_tipoDeTierra, _posicion, [], 0, "CAN_COLLIDE"];
