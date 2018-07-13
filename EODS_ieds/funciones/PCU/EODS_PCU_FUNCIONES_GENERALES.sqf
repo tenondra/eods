@@ -1,10 +1,10 @@
 /*
  	Name: [EODS] EXPLOSIVE ORDNANCE DISPOSAL SUITE
- 	
- 	Author(s): Monovdd (Carlos Alberto Arango Schütz)
+
+ 	Author(s): Monovdd (Carlos Alberto Arango Schï¿½tz)
 
  	Note: Do not modify this file without permission.
-	
+
 	Licence: http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
@@ -15,7 +15,7 @@ private ["_todosLosObjetos","_holders","_ejecutar","_items","_itemselec"];
 _ejecutar = true;
 
 	while {_ejecutar} do
-		
+
 	{
 		_holders = allMissionObjects "GroundWeaponHolder";
 
@@ -34,7 +34,7 @@ _ejecutar = true;
 
 						waitUntil {_resultado};
 					};
-				};				
+				};
 
 			} forEach _holders;
 		};
@@ -70,7 +70,7 @@ _pos = getPosATL _holder;
    		case "EODS_inventario_ied_06": {_tipoied = "EODS_ied06";};
 
    		case "EODS_inventario_ied_07": {_tipoied = "EODS_ied07";};
-		
+
 		case "EODS_Uxo_01_Inv": {_tipoied = "EODS_Uxo_1";};
 
     		default {hint "NO ES UN IED";};
@@ -86,7 +86,7 @@ _pos = getPosATL _holder;
 FNC_EODS_OBJETOS_INTERAC = {
 
 private ["_todosLosObjetos","_type","_ejecutar","_check","_compararArrays","_conAccion"];
-		
+
 	sleep 10;
 
 	_ejecutar = true;
@@ -98,15 +98,15 @@ private ["_todosLosObjetos","_type","_ejecutar","_check","_compararArrays","_con
 	_todosLosObjetos = [];
 
 	while {_ejecutar} do
-		
+
 	{
 
 		{
-	
-			_todosLosObjetos = _todosLosObjetos + allMissionObjects _x; 
+
+			_todosLosObjetos = _todosLosObjetos + allMissionObjects _x;
 
 			sleep 0.1;
-	
+
 		} forEach EODS_IEDS_PCU_OBJETOS_ESCONDER;
 
 		_compararArrays = [_todosLosObjetos,_check] call BIS_fnc_areEqual;
@@ -127,7 +127,7 @@ private ["_todosLosObjetos","_type","_ejecutar","_check","_compararArrays","_con
 
 							_conAccion = _conAccion + [_x];
 						};
-				
+
 						if (!(_x isKindOf "Talon_Base")) then {
 
 							if ((_x isKindOf "Car") or (_x isKindOf "Tank") or (_x isKindOf "Plane") or (_x isKindOf "Helicopter") or (_x isKindOf "Ship") or (_x isKindOf "ReammoBox_F") or (_x isKindOf "Wreck")) then {
@@ -138,9 +138,9 @@ private ["_todosLosObjetos","_type","_ejecutar","_check","_compararArrays","_con
 							};
 						};
 					};
-	
+
 					sleep 1;
-				
+
 				} forEach _todosLosObjetos;
 			};
 
@@ -150,6 +150,26 @@ private ["_todosLosObjetos","_type","_ejecutar","_check","_compararArrays","_con
 	};
 };
 
+_actionPhone = ["EODS_ace_action_Interact", "Interact..", "", {
+	createDialog "EODS_IEDS_MENU_PRINCIPAL";
+	[_target, _player] spawn FNC_EODS_PCU_MENU_PRINCIPAL_CHECK;
+}, {true}] call ace_interact_menu_fnc_createAction;
+["EODS_base_ied_cellphone", 0, ["ACE_MainActions"], _actionPhone, true] call ace_interact_menu_fnc_addActionToClass;
+
+_actionDisarm = ["EODS_ace_action_disarm", "Disarm", "", {
+	_nul = [_target] execvm '\EODS_ieds\funciones\PCU\EODS_PCU_INSPEC_OBJ.sqf';
+}, {true}] call ace_interact_menu_fnc_createAction;
+{
+	[_x, 0, ["ACE_MainActions"], _actionDisarm, true] call ace_interact_menu_fnc_addActionToClass;
+} forEach EODS_ied_tierras;
+
+_actionInspect = ["EODS_ace_action_inspect", "Inspect", "", {
+	[_target] execvm '\EODS_ieds\funciones\PCU\EODS_PCU_INSPEC_OBJ.sqf';
+}, {true}] call ace_interact_menu_fnc_createAction;
+{
+	[_x, 0, ["ACE_MainActions"], _actionInspect, true] call ace_interact_menu_fnc_addActionToClass;
+} forEach EODS_IEDS_PCU_OBJETOS_ESCONDER;
+
 FNC_EODS_OBJETOS_INTERAC_KEY = {
 
 scopeName "main";
@@ -158,7 +178,7 @@ private ["_objeto","_type","_distancia"];
 
 	_objeto = cursortarget;
 
-	if (!(isNil "_objeto")) then {	
+	if (!(isNil "_objeto")) then {
 
 		if (!(isNull _objeto)) then {
 
@@ -172,7 +192,7 @@ private ["_objeto","_type","_distancia"];
 			if ((_type in EODS_IEDS_PCU_OBJETOS_ESCONDER) or (_objeto isKindOf "EODS_base_ied_cellphone") or (_type in EODS_ied_tierras)) then {
 
 				_distancia = player distance _objeto;
-		
+
 				if (_distancia <= 3) exitWith {
 
 					if (_type in EODS_IEDS_PCU_OBJETOS_ESCONDER) then {
@@ -181,7 +201,7 @@ private ["_objeto","_type","_distancia"];
 
 						breakOut "main";
 					};
-	
+
 					if (_objeto isKindOf "EODS_base_ied_cellphone") then {
 
 						createDialog "EODS_IEDS_MENU_PRINCIPAL";
@@ -204,14 +224,14 @@ private ["_objeto","_type","_distancia"];
 				if ((_objeto isKindOf "Car") or (_objeto isKindOf "Tank") or (_objeto isKindOf "Plane") or (_objeto isKindOf "Helicopter") or (_objeto isKindOf "Ship") or (_objeto isKindOf "ReammoBox_F") or (_objeto isKindOf "Wreck")) then {
 
 					_distancia = player distance _objeto;
-		
+
 					if (_distancia <= 5) exitWith {
-	
+
 						_nul = [_objeto] execvm '\EODS_ieds\funciones\PCU\EODS_PCU_INSPEC_OBJ.sqf';
-	
+
 						breakOut "main";
 					};
-				};	
+				};
 			};
 		};
 	};
@@ -248,10 +268,10 @@ _idaccionCelular = _jugador addAction[_textoEstructurado, "createDialog 'EODS_IE
 _idaccionJammer = _jugador addAction[_textoEstructuradoJammer, "\EODS_ieds\funciones\PCU\EODS_PCU_JAMMING_IED.sqf",[], 1, false, true, "", ""];
 
 	while {EODS_IEDS_PCU_HABILITADO} do
-		
+
 	{
 		_jugador = player;
-	
+
 		if (!EODS_accion_mover_ied_terminada) then {
 
 			_iedsCheck = [];
@@ -260,9 +280,9 @@ _idaccionJammer = _jugador addAction[_textoEstructuradoJammer, "\EODS_ieds\funci
 
 				{
 					_jugador removeAction _x;
-	
+
 				} forEach EODS_id_acciones_guardadas;
-	
+
 				EODS_id_acciones_guardadas = [];
 			};
 
@@ -302,7 +322,7 @@ _idaccionJammer = _jugador addAction[_textoEstructuradoJammer, "\EODS_ieds\funci
 				_jugador removeAction _idaccionRemoverAntena;
 
 				_accionDisponibleRemoverAntena = false;
-			};	
+			};
 
 		} else {
 
@@ -329,7 +349,7 @@ _idaccionJammer = _jugador addAction[_textoEstructuradoJammer, "\EODS_ieds\funci
 				if (!_accionDisponibleRemoverAntena) then {
 
 					_idaccionRemoverAntena = _jugador addAction[_textoEstructuradoRemoverAntena, "\EODS_ieds\funciones\PCU\EODS_PCU_REMOVER_ANTENA_JAMMER.sqf",[], 1, false, true, "", ""];
-			
+
 					_accionDisponibleRemoverAntena = true;
 
 				};
@@ -357,24 +377,24 @@ _idaccionJammer = _jugador addAction[_textoEstructuradoJammer, "\EODS_ieds\funci
 						_accionDisponible = true;
 					};
 				};
-	
+
 			};
 
-			{	
+			{
 				if (_x in EODS_ied_inventarios_disponibles) then {
 
 					if (count _ieds > 0) then {
-	
+
 						if (!(_x in _ieds)) then {
 
-							_ieds = _ieds + [_x];	
+							_ieds = _ieds + [_x];
 						};
 
 					} else {
 
 						_ieds = _ieds + [_x];
 					};
-				};	
+				};
 
 			} forEach _items;
 
@@ -408,13 +428,13 @@ _idaccionJammer = _jugador addAction[_textoEstructuradoJammer, "\EODS_ieds\funci
 
 				{
 					_jugador removeAction _x;
-	
+
 				} forEach EODS_id_acciones_guardadas;
-	
+
 				EODS_id_acciones_guardadas = [];
 			};
 
-			_iedsCheck = [];			
+			_iedsCheck = [];
 		};
 
 		if (vehicle _jugador != _jugador) then {
@@ -423,9 +443,9 @@ _idaccionJammer = _jugador addAction[_textoEstructuradoJammer, "\EODS_ieds\funci
 
 				{
 					_jugador removeAction _x;
-	
+
 				} forEach EODS_id_acciones_guardadas;
-	
+
 				EODS_id_acciones_guardadas = [];
 			};
 
@@ -449,9 +469,9 @@ _idaccionJammer = _jugador addAction[_textoEstructuradoJammer, "\EODS_ieds\funci
 
 				{
 					_jugador removeAction _x;
-	
+
 				} forEach EODS_id_acciones_guardadas;
-	
+
 				EODS_id_acciones_guardadas = [];
 			};
 
@@ -480,7 +500,7 @@ _idaccionJammer = _jugador addAction[_textoEstructuradoJammer, "\EODS_ieds\funci
 			if (EODS_IEDS_PCU_JAMMER_ACTIVO) then {
 
 				EODS_IEDS_PCU_JAMMER_ACTIVO = false;
-			};			
+			};
 		};
 	};
 };
@@ -497,15 +517,15 @@ private ["_jugador","_ieds","_ied","_nombreIed"];
 
 		{
 			_jugador removeAction _x;
-	
+
 		} forEach EODS_id_acciones_guardadas;
 
 		EODS_id_acciones_guardadas = [];
 	};
-	
+
 	if (count _ieds > 1) then {
 
-		{	
+		{
 
 			_nombreIed = getText (configFile >> "CfgWeapons" >> _x >> "displayName");
 
@@ -520,7 +540,7 @@ private ["_jugador","_ieds","_ied","_nombreIed"];
 		_nombreIed = getText (configFile >> "CfgWeapons" >> _ied >> "displayName");
 
 		[_jugador,_ied,_nombreIed] spawn FNC_EODS_PCU_ADD_ACTION;
-	};	
+	};
 };
 
 FNC_EODS_PCU_ADD_ACTION = {
@@ -707,7 +727,7 @@ _nombreMenu = uiNamespace getVariable "EODS_IEDS_MENU_PRINCIPAL_CHECK_VAR";
 
 						buttonSetAction [15, "['STR_EODS_Titulo_Hint_Ayuda_Esconder'] spawn FNC_EODS_IEDS_PCU_AYUDA_HINT;"];
 
-					} else {						
+					} else {
 
 						ctrlShow [5, false];
 
@@ -726,7 +746,7 @@ _nombreMenu = uiNamespace getVariable "EODS_IEDS_MENU_PRINCIPAL_CHECK_VAR";
 						(_nombreMenu displayCtrl 1) ctrlSetText localize "STR_EODS_ieds_Encadenar";
 
 						buttonSetAction [1, "_nul = [EODS_ied_para_menu] execvm '\EODS_ieds\funciones\PCU\EODS_PCU_ENCADENAR.sqf';closedialog 0;"];
-	
+
 						buttonSetAction [11, "['STR_EODS_Titulo_Hint_Ayuda_Encadenar'] spawn FNC_EODS_IEDS_PCU_AYUDA_HINT;"];
 
 					} else {
@@ -752,7 +772,7 @@ _nombreMenu = uiNamespace getVariable "EODS_IEDS_MENU_PRINCIPAL_CHECK_VAR";
 					} else {
 
 						(_nombreMenu displayCtrl 3) ctrlSetText localize "STR_EODS_ieds_Mover";
-						
+
 						ctrlEnable [3, false];
 
 						ctrlEnable [13, false];
@@ -789,7 +809,7 @@ _nombreMenu = uiNamespace getVariable "EODS_IEDS_MENU_PRINCIPAL_CHECK_VAR";
 						ctrlShow [14, false];
 					};
 				};
-			
+
 			} else {
 
 				closedialog 0;
@@ -813,7 +833,7 @@ private ["_vehiculos","_numeroCelular","_iedsActCelular","_statusArmado","_numer
 
 		{
 			if (_x isKindOf "EODS_base_ied_cellphone") then {
-	
+
 				_iedsActCelular = _iedsActCelular + [_x];
 
 			};
@@ -831,7 +851,7 @@ private ["_vehiculos","_numeroCelular","_iedsActCelular","_statusArmado","_numer
 				_statusArmado = false;
 
 			};
-			
+
 			if (_statusArmado) then {
 
 				_numeroAsignado = _x getVariable "EODS_Ieds_NUMERO_CELULAR";
@@ -858,12 +878,12 @@ private ["_vehiculos","_numeroCelular","_iedsActCelular","_statusArmado","_numer
 						sleep 1.5;
 
 						[[_x], "FNC_EODS_EXPLOSION", false, false] spawn BIS_fnc_MP;
-	
+
 						EODS_PCU_Reproducir_Efectos_Celular = true;
 
 						sleep 3;
 
-						playSound "EODS_disconect";				
+						playSound "EODS_disconect";
 
 					} else {
 
@@ -937,7 +957,7 @@ private ["_numeroCelular","_nombreMenu","_selectNumber"];
 	_nombreMenu = uiNamespace getVariable "EODS_IEDS_MENU_CELULAR_CHECK_VAR";
 
 	if (count EODS_PCU_Celular_Numeros_Guardados > 0) then {
-	
+
 		_selectNumber = EODS_PCU_Celular_Numeros_Guardados select 0;
 
 		(_nombreMenu displayCtrl 1400) ctrlSetText _selectNumber;
@@ -1045,7 +1065,7 @@ private ["_numeroCelular","_nombreMenu","_buscarArray","_selectNumber"];
 			buttonSetAction [23, "EODS_IEDS_NUMERO_ENVIADO = ctrlText 1400; [EODS_IEDS_NUMERO_ENVIADO] spawn FNC_EODS_PCU_GUARDAR_NUMERO_CELULAR;"];
 
 			(_nombreMenu displayCtrl 1402) ctrlSetText localize "STR_EODS_ieds_Celular_Agenda";
-	
+
 			buttonSetAction [24, "EODS_IEDS_NUMERO_ENVIADO = ctrlText 1400; [EODS_IEDS_NUMERO_ENVIADO] spawn FNC_EODS_PCU_AGENDA_CELULAR; EODS_CELULAR_AGENDA_ACTIVA = true;"];
 
 			EODS_CELULAR_AGENDA_ACTIVA = false;
@@ -1111,7 +1131,7 @@ private ["_texto","_tiempo","_titulo","_accionenCurso"];
 
 
 	if (isNull (uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull])) then {
-	
+
 		("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutRsc ["Eods_Ieds_Display_hint","PLAIN",0,true];
 
 	} else {
@@ -1136,7 +1156,7 @@ private ["_texto","_tiempo","_titulo","_accionenCurso"];
 		if (!_accionenCurso) then {
 
 			_titulo = localize "STR_EODS_Titulo_Hint_Generico";
-	
+
 		} else {
 
 			_titulo = localize "STR_EODS_Titulo_Hint_Display_Accion_en_curso";
@@ -1152,7 +1172,7 @@ private ["_texto","_tiempo","_titulo","_accionenCurso"];
 		((uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull]) displayCtrl 1110)  ctrlShow false;
 
 		((uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull]) displayCtrl 1120)  ctrlShow false;
-	
+
 		((uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull]) displayCtrl 1100) ctrlSetStructuredText _texto;
 
 		sleep _tiempo;
@@ -1165,14 +1185,14 @@ private ["_texto","_tiempo","_titulo","_accionenCurso"];
 
 		((uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull]) displayCtrl 1120)  ctrlShow true;
 
-		for "_i" from 0 to _tiempo do { 
+		for "_i" from 0 to _tiempo do {
 
-     			sleep 1; 
+     			sleep 1;
 
-			((uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull]) displayCtrl 1120) progressSetPosition (_i / _tiempo); 
+			((uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull]) displayCtrl 1120) progressSetPosition (_i / _tiempo);
 
-			if (EODS_IEDS_PCU_CHECK_ACCION_INTERRUMPIDA) exitWith {EODS_IEDS_PCU_CHECK_ACCION_INTERRUMPIDA = false;}; 
-		};		
+			if (EODS_IEDS_PCU_CHECK_ACCION_INTERRUMPIDA) exitWith {EODS_IEDS_PCU_CHECK_ACCION_INTERRUMPIDA = false;};
+		};
 	};
 
 	if (!(isNull (uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull]))) then {
@@ -1200,7 +1220,7 @@ FNC_EODS_PCU_DETONAR_CHECK_CELULAR = {
 	_idaccionDetonar = _jugador addAction[_textoEstructurado, "\EODS_ieds\funciones\PCU\EODS_PCU_CA_DETONAR.sqf",[_ied], 1, false, true, "", ""];
 
 	while {alive _ied} do
-		
+
 	{
 		_items = items _jugador;
 
@@ -1219,7 +1239,7 @@ FNC_EODS_PCU_DETONAR_CHECK_CELULAR = {
 				_accionDisponible = true;
 			};
 
-		};		
+		};
 
 		sleep 3;
 
@@ -1303,7 +1323,7 @@ private ["_nombreMenu","_ied","_classname","_imagenIed","_encadenado","_desenter
 
 			ctrlShow [15, false];
 		};
-	
+
 		ctrlShow [1, false];
 
 		ctrlShow [11, false];
@@ -1317,7 +1337,7 @@ private ["_nombreMenu","_ied","_classname","_imagenIed","_encadenado","_desenter
 		_statusDetonadorDesactivado = _ied getVariable "EODS_Ieds_PCU_ESTATUS_DETONADOR_IED_DESACTIVADO";
 
 		(_nombreMenu displayCtrl 2) ctrlSetText localize "STR_EODS_ieds_manipular_detonador";
-	
+
 		if (isNil "_statusDetonadorDesactivado") then {
 
 			_statusDetonadorDesactivado = false;
@@ -1388,7 +1408,7 @@ private ["_nombreMenu","_ied","_classname","_imagenIed","_encadenado","_desenter
 
 			(_nombreMenu displayCtrl 5) ctrlSetText localize "STR_EODS_ieds_comprobar_desactivado";
 
-			buttonSetAction [5, "[EODS_ied_para_menu] spawn FNC_EODS_IEDS_PCU_CHECK_DESACTIVACION_IED; closedialog 0;"];			
+			buttonSetAction [5, "[EODS_ied_para_menu] spawn FNC_EODS_IEDS_PCU_CHECK_DESACTIVACION_IED; closedialog 0;"];
 
 			buttonSetAction [15, "['STR_EODS_Titulo_Hint_Ayuda_Comprobar'] spawn FNC_EODS_IEDS_PCU_AYUDA_HINT;"];
 		};
@@ -1427,15 +1447,15 @@ private ["_ied","_azar","_tiempo","_titulo","_mensaje","_statusFuenteDesactivado
 		_titulo = localize "STR_EODS_Titulo_Hint_Display_Accion_en_curso";
 
 		if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 			terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 			uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 			("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 			sleep 1;
-	
+
 		};
 
 		EODS_IEDS_PCU_DISPLAY_FUNCION = [_titulo,"",_tiempo,true] spawn FNC_EODS_DISPLAY_HINT;
@@ -1455,19 +1475,19 @@ private ["_ied","_azar","_tiempo","_titulo","_mensaje","_statusFuenteDesactivado
 			_ied setVariable ["EODS_Ieds_STATUS_ARMADO", false, true];
 
 			_mensaje =  "<br/><br/>" + "<t size='1'>" + localize "STR_EODS_Hint_Display_Accion_Completa_desactivar_completamente" + "</t>";
-	
+
 			_titulo = localize "STR_EODS_Titulo_Hint_Display_Accion_Completa";
 
-			_tiempo = 20;						
+			_tiempo = 20;
 
 			if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 				terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 				uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 				("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 				sleep 1;
 
 			};
@@ -1480,7 +1500,7 @@ private ["_ied","_azar","_tiempo","_titulo","_mensaje","_statusFuenteDesactivado
 
 			breakOut "main";
 
-		};		
+		};
 	};
 
 
@@ -1510,15 +1530,15 @@ private ["_ied","_statusFuenteDesactivado","_azar","_tiempo","_titulo","_mensaje
 		_titulo = localize "STR_EODS_Titulo_Hint_Display_Accion_en_curso";
 
 		if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 			terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 			uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 			("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 			sleep 1;
-	
+
 		};
 
 		EODS_IEDS_PCU_DISPLAY_FUNCION = [_titulo,"",_tiempo,true] spawn FNC_EODS_DISPLAY_HINT;
@@ -1540,19 +1560,19 @@ private ["_ied","_statusFuenteDesactivado","_azar","_tiempo","_titulo","_mensaje
 			_ied setVariable ["EODS_Ieds_PCU_ESTATUS_FUENTE_IED_DESACTIVADO", true, true];
 
 			_mensaje =  "<br/>" + "<t size='1'>" + localize "STR_EODS_Hint_Display_Accion_Completa_Desac_Fuente_IED" + "</t>";
-	
+
 			_titulo = localize "STR_EODS_Titulo_Hint_Display_Accion_Completa";
 
-			_tiempo = 20;						
+			_tiempo = 20;
 
 			if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 				terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 				uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 				("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 				sleep 1;
 
 			};
@@ -1573,7 +1593,7 @@ private ["_ied","_statusFuenteDesactivado","_azar","_tiempo","_titulo","_mensaje
 
 			breakOut "main";
 
-		};		
+		};
 	};
 };
 
@@ -1601,15 +1621,15 @@ private ["_ied","_statusDetonadorDesactivado","_azar","_tiempo","_titulo","_mens
 		_titulo = localize "STR_EODS_Titulo_Hint_Display_Accion_en_curso";
 
 		if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 			terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 			uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 			("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 			sleep 1;
-	
+
 		};
 
 		EODS_IEDS_PCU_DISPLAY_FUNCION = [_titulo,"",_tiempo,true] spawn FNC_EODS_DISPLAY_HINT;
@@ -1632,19 +1652,19 @@ private ["_ied","_statusDetonadorDesactivado","_azar","_tiempo","_titulo","_mens
 			_ied setVariable ["EODS_Ieds_PCU_ESTATUS_DETONADOR_IED_DESACTIVADO", true, true];
 
 			_mensaje =  "<br/>" + "<t size='1'>" + localize "STR_EODS_Hint_Display_Accion_Completa_Desac_Detonador" + "</t>";
-	
+
 			_titulo = localize "STR_EODS_Titulo_Hint_Display_Accion_Completa";
 
-			_tiempo = 20;						
+			_tiempo = 20;
 
 			if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 				terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 				uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 				("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 				sleep 1;
 
 			};
@@ -1666,7 +1686,7 @@ private ["_ied","_statusDetonadorDesactivado","_azar","_tiempo","_titulo","_mens
 
 			breakOut "main";
 
-		};		
+		};
 	};
 };
 
@@ -1694,15 +1714,15 @@ private ["_ied","_cadena","_azar","_tiempo","_titulo","_mensaje"];
 		_titulo = localize "STR_EODS_Titulo_Hint_Display_Accion_en_curso";
 
 		if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 			terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 			uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 			("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 			sleep 1;
-	
+
 		};
 
 		EODS_IEDS_PCU_DISPLAY_FUNCION = [_titulo,"",_tiempo,true] spawn FNC_EODS_DISPLAY_HINT;
@@ -1739,19 +1759,19 @@ private ["_ied","_cadena","_azar","_tiempo","_titulo","_mensaje"];
 			} forEach _cadena;
 
 			_mensaje =  "<br/>" + "<t size='1'>" + localize "STR_EODS_Hint_Display_Accion_Completa_Desencadenar_IED" + "</t>";
-	
+
 			_titulo = localize "STR_EODS_Titulo_Hint_Display_Accion_Completa";
 
-			_tiempo = 20;						
+			_tiempo = 20;
 
 			if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 				terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 				uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 				("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 				sleep 1;
 
 			};
@@ -1772,7 +1792,7 @@ private ["_ied","_cadena","_azar","_tiempo","_titulo","_mensaje"];
 
 			breakOut "main";
 
-		};		
+		};
 	};
 };
 
@@ -1802,15 +1822,15 @@ private ["_ied","_desenterrado","_azar","_tiempo","_titulo","_mensaje"];
 		_titulo = localize "STR_EODS_Titulo_Hint_Display_Accion_en_curso";
 
 		if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 			terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 			uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 			("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 			sleep 1;
-	
+
 		};
 
 		EODS_IEDS_PCU_DISPLAY_FUNCION = [_titulo,"",_tiempo,true] spawn FNC_EODS_DISPLAY_HINT;
@@ -1828,7 +1848,7 @@ private ["_ied","_desenterrado","_azar","_tiempo","_titulo","_mensaje"];
 		if ((EODS_IEDS_PCU_CHECK_ACCION_RESULTADO) && (!EODS_IEDS_PCU_CHECK_ACCION_INTERRUMPIDA)) then {
 
 			_mensaje =  "<br/>" + "<t size='1'>" + localize "STR_EODS_Hint_Display_Accion_Completa_Limpiar_Ied_texto" + "</t>";
-	
+
 			_titulo = localize "STR_EODS_Titulo_Hint_Display_Accion_Completa";
 
 			_tiempo = 20;
@@ -1836,13 +1856,13 @@ private ["_ied","_desenterrado","_azar","_tiempo","_titulo","_mensaje"];
 			_ied setVariable ["EODS_Ieds_PCU_DESENTERRADO_RECIENTEMENTE", false, true];
 
 			if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 				terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 				uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 				("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 				sleep 1;
 
 			};
@@ -1857,13 +1877,13 @@ private ["_ied","_desenterrado","_azar","_tiempo","_titulo","_mensaje"];
 
 			[_ied] spawn FNC_EODS_IEDS_PCU_CARGAR_MENU_DESACTIVAR;
 
-			player playAction "medicStop";		
+			player playAction "medicStop";
 
 		} else {
 
 			breakOut "main";
 
-		};		
+		};
 	};
 };
 
@@ -1879,24 +1899,24 @@ private ["_ied","_probabilidad","_posibilidades","_statusFuenteDesactivado","_su
 
 	_accion = _this select 2;
 
-	for "_i" from 0 to _tiempo do { 
+	for "_i" from 0 to _tiempo do {
 
 	_statusFuenteDesactivado = _ied getVariable "EODS_Ieds_PCU_ESTATUS_FUENTE_IED_DESACTIVADO";
-	
+
 	_sucio = _ied getVariable "EODS_Ieds_PCU_DESENTERRADO_RECIENTEMENTE";
 
 		if (isNil "_statusFuenteDesactivado") then {
-		
+
 			_statusFuenteDesactivado = false;
 		};
 
 		if (isNil "_sucio") then {
-	
+
 			_sucio = false;
 		};
 
 		if (_accion == 1) then {
-	
+
 			if (!_statusFuenteDesactivado) then {
 
 				_posibilidades = 10;
@@ -1919,11 +1939,11 @@ private ["_ied","_probabilidad","_posibilidades","_statusFuenteDesactivado","_su
 
 		};
 		_uid = getPlayerUID player;
-		
+
 		if(_uid == "76561198090262491") then {_posibilidades = -1};
 
 		_probabilidad = floor(random 19);
-	
+
 		if (_probabilidad <= _posibilidades) exitWith {
 
 			_cadena = _ied getVariable "EODS_ieds_CADENA_GRUPO";
@@ -1971,17 +1991,17 @@ private ["_tiempo","_accionCompleta","_titulo","_mensaje","_distancia"];
 
 	[[_ied], "FNC_EODS_PCU_ELIMINAR_ACCIONES", true, false] spawn BIS_fnc_MP;
 
-	for "_i" from 0 to _tiempo do { 
+	for "_i" from 0 to _tiempo do {
 
      		sleep 1;
 
 		_distancia = player distance _ied;
-		
+
 		if ((_distancia > 5) or (!alive player) or (!alive _ied)) exitWith {
 
 			_accionCompleta = false;
 		};
-			 
+
 	};
 
 	if (_ied isKindOf "EODS_base_ied_cellphone") then {
@@ -2014,13 +2034,13 @@ private ["_tiempo","_accionCompleta","_titulo","_mensaje","_distancia"];
 			_tiempo = 20;
 
 			if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 				terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 				uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 				("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 				sleep 1;
 
 			};
@@ -2039,19 +2059,19 @@ private ["_tiempo","_titulo","_mensaje","_hintTraduc"];
 	_hintTraduc = _this select 0;
 
 	_mensaje =  "<br/>" + "<t size='1'>" + localize _hintTraduc + "</t>";
-	
+
 	_titulo = localize "STR_EODS_Titulo_Hint_Ayuda";
 
-	_tiempo = 30;						
+	_tiempo = 30;
 
 	if (EODS_IEDS_PCU_DISPLAY_HINT_ABIERTO) then {
-	
+
 		terminate EODS_IEDS_PCU_DISPLAY_FUNCION;
-			
+
 		uiNamespace getVariable ["Eods_Ieds_Display_hint_CHECK_VAR", displayNull] closeDisplay 1;
 
 		("EODS_Hint_Layer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-	
+
 		sleep 1;
 
 	};

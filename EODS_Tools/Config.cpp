@@ -209,7 +209,7 @@ class CfgWeapons
 		model = "\EODS_Tools\Meshes\EODS_Mirror2.p3d";
 		displayname = "[EODS] Small Mirror";
 	};
-	
+
 };
 class CfgVehicleClasses
 {
@@ -223,7 +223,7 @@ class cfgVehicles
 	class ThingEffect;
 	class Strategic;
 	class ReammoBox;
-	class Box_NATO_Support_F;	
+	class Box_NATO_Support_F;
 	class ThingX;
 	class EODS_Pliers_Veh: ThingX
 	{
@@ -317,7 +317,7 @@ class cfgVehicles
 		_generalMacro="EODS_Mirror_BOX_Base";
 		scope=1;
 		displayName="EODS_Mirror_BOX_Base";
-		model="\EODS_BOXES\Eods_GeneralPurpose_Box.p3d";
+		//model="\EODS_BOXES\Eods_GeneralPurpose_Box.p3d";
 		icon="iconCrate";
 		maximumLoad=500;
 		transportMaxWeapons=6;
@@ -366,7 +366,7 @@ class cfgVehicles
 	{
 		scope = 2;
 		scopeCurator = 2;
-	//	type = 4; //type = 4; Mean Launcher slot __ type = 0; is for invisible throw/put type weapons __ type = 1; is the primaryWeapon slot, for rifles, MGs etc __ type = 2; is the Handgun slot __ type = "1 + 4"; will fill both the primary and secondary weapon slots 
+	//	type = 4; //type = 4; Mean Launcher slot __ type = 0; is for invisible throw/put type weapons __ type = 1; is the primaryWeapon slot, for rifles, MGs etc __ type = 2; is the Handgun slot __ type = "1 + 4"; will fill both the primary and secondary weapon slots
 
 
 		displayName = "EODS_Mirror";

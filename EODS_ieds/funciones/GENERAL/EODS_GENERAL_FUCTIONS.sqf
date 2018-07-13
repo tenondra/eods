@@ -1,10 +1,10 @@
 /*
  	Name: [EODS] EXPLOSIVE ORDNANCE DISPOSAL SUITE
- 	
- 	Author(s): Monovdd (Carlos Alberto Arango Schütz)
+
+ 	Author(s): Monovdd (Carlos Alberto Arango Schï¿½tz)
 
  	Note: Do not modify this file without permission.
-	
+
 	Licence: http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
@@ -75,7 +75,7 @@ FNC_EODS_HIDE = {
 
 	} else {
 
-		_objecto hideObject false;	
+		_objecto hideObject false;
 	};
 };
 
@@ -90,43 +90,43 @@ private ["_enterrado","_tipoRingtone","_ied"];
 	_tipoRingtone = floor(random 4);
 
 	if (!_enterrado) then {
-	
+
 		switch (_tipoRingtone) do {
 
-			case 0: 
-							
+			case 0:
+
 			{
 
 			[[_ied,"EODS_ringtone_01"], "FNC_EODS_SAY3D", true, false] spawn BIS_fnc_MP;
 
 			};
 
-			case 1: 
-							
+			case 1:
+
 			{
 
 			[[_ied,"EODS_ringtone_02"], "FNC_EODS_SAY3D", true, false] spawn BIS_fnc_MP;
 
 			};
 
-			case 2: 
-							
+			case 2:
+
 			{
 
 			[[_ied,"EODS_ringtone_03"], "FNC_EODS_SAY3D", true, false] spawn BIS_fnc_MP;
 
 			};
 
-			case 3: 
-							
+			case 3:
+
 			{
 
 			[[_ied,"EODS_ringtone_04"], "FNC_EODS_SAY3D", true, false] spawn BIS_fnc_MP;
 
 			};
 
-			case 4: 
-							
+			case 4:
+
 			{
 
 			[[_ied,"EODS_ringtone_05"], "FNC_EODS_SAY3D", true, false] spawn BIS_fnc_MP;
@@ -139,7 +139,7 @@ private ["_enterrado","_tipoRingtone","_ied"];
 		switch (_tipoRingtone) do {
 
 			case 0:
-							
+
 			{
 
 			[[_ied,"EODS_ringtone_01_enterrado"], "FNC_EODS_SAY3D", true, false] spawn BIS_fnc_MP;
@@ -147,7 +147,7 @@ private ["_enterrado","_tipoRingtone","_ied"];
 			};
 
 			case 1:
-							
+
 			{
 
 			[[_ied,"EODS_ringtone_02_enterrado"], "FNC_EODS_SAY3D", true, false] spawn BIS_fnc_MP;
@@ -155,7 +155,7 @@ private ["_enterrado","_tipoRingtone","_ied"];
 			};
 
 			case 2:
-							
+
 			{
 
 			[[_ied,"EODS_ringtone_03_enterrado"], "FNC_EODS_SAY3D", true, false] spawn BIS_fnc_MP;
@@ -163,7 +163,7 @@ private ["_enterrado","_tipoRingtone","_ied"];
 			};
 
 			case 3:
-							
+
 			{
 
 			[[_ied,"EODS_ringtone_04_enterrado"], "FNC_EODS_SAY3D", true, false] spawn BIS_fnc_MP;
@@ -171,7 +171,7 @@ private ["_enterrado","_tipoRingtone","_ied"];
 			};
 
 			case 4:
-							
+
 			{
 
 			[[_ied,"EODS_ringtone_05_enterrado"], "FNC_EODS_SAY3D", true, false] spawn BIS_fnc_MP;
@@ -179,7 +179,7 @@ private ["_enterrado","_tipoRingtone","_ied"];
 			};
 		};
 
-	};	
+	};
 };
 
 FNC_EODS_EXPLOSION = {
@@ -187,6 +187,7 @@ FNC_EODS_EXPLOSION = {
 private ["_cadena","_autRingtone","_probabilidad","_restos","_espera","_syncro","_tierra","_enterrado","_ied","_tipoMetralla","_explosion","_posicion","_tipodebomba","_numeroexplisiones","_numerofragmentos","_maxAfecDistancia","_hombres","_radioCaida","_escondido","_objetoContenedor"];
 
 	_ied = _this select 0;
+	//Debug
 
 	if (alive _ied) then {
 
@@ -208,22 +209,22 @@ private ["_cadena","_autRingtone","_probabilidad","_restos","_espera","_syncro",
 
 		switch (typeOf _ied) do {
 
-   			case "EODS_ied01": { 
+   			case "EODS_ied01": {
 
 				_tipodebomba = "Bo_GBU12_LGB_MI10";
 
 				_numeroexplisiones = 1;
 
 				_numerofragmentos = 120;
-		
+
 				_maxAfecDistancia = 200;
 
 				_radioCaida = 75;
 
 				_tipoMetralla = "B_408_Ball";
 			};
-	
-   			case "EODS_ied02": { 
+
+   			case "EODS_ied02": {
 
 				_tipodebomba = "Bo_GBU12_LGB_MI10";
 
@@ -238,7 +239,7 @@ private ["_cadena","_autRingtone","_probabilidad","_restos","_espera","_syncro",
 				_tipoMetralla = "B_127x99_Ball";
 			};
 
-   			case "EODS_ied03": { 
+   			case "EODS_ied03": {
 
 				_tipodebomba = "Bo_GBU12_LGB_MI10";
 
@@ -253,7 +254,7 @@ private ["_cadena","_autRingtone","_probabilidad","_restos","_espera","_syncro",
 				_tipoMetralla = "B_408_Ball";
 			};
 
-   			case "EODS_ied04": { 
+   			case "EODS_ied04": {
 
 				_tipodebomba = "R_80mm_HE";
 
@@ -268,7 +269,7 @@ private ["_cadena","_autRingtone","_probabilidad","_restos","_espera","_syncro",
 				_tipoMetralla = "B_408_Ball";
 			};
 
-   			case "EODS_ied05": { 
+   			case "EODS_ied05": {
 
 				_tipodebomba = "Bo_GBU12_LGB_MI10";
 
@@ -283,7 +284,7 @@ private ["_cadena","_autRingtone","_probabilidad","_restos","_espera","_syncro",
 				_tipoMetralla = "B_408_Ball";
 			};
 
-   			case "EODS_ied06": { 
+   			case "EODS_ied06": {
 
 				_tipodebomba = "Bo_GBU12_LGB_MI10";
 
@@ -298,7 +299,7 @@ private ["_cadena","_autRingtone","_probabilidad","_restos","_espera","_syncro",
 				_tipoMetralla = "B_408_Ball";
 			};
 
-   			case "EODS_ied07": { 
+   			case "EODS_ied07": {
 
 				_tipodebomba = "R_80mm_HE";
 
@@ -313,7 +314,7 @@ private ["_cadena","_autRingtone","_probabilidad","_restos","_espera","_syncro",
 				_tipoMetralla = "B_408_Ball";
 			};
 
-    			default { 
+    			default {
 
 				_tipodebomba = "R_80mm_HE";
 
@@ -415,10 +416,10 @@ private ["_cadena","_autRingtone","_probabilidad","_restos","_espera","_syncro",
 		} forEach _hombres;
 
 		[[_posicion,_maxAfecDistancia] , "EODS_EFECTOS_JUGADOR", true, false] spawn BIS_fnc_MP;
-	
+
 		//[[_posicion,_ied] , "EODS_EFECTOS_GENERAL", true, false] spawn BIS_fnc_MP;
 
-		for "_i" from 1 to _numeroexplisiones do{ 
+		for "_i" from 1 to _numeroexplisiones do{
 
 			_explosion = createVehicle [_tipodebomba, _posicion, [], 0, "CAN_COLLIDE"];
 
@@ -447,7 +448,7 @@ private ["_cadena","_autRingtone","_probabilidad","_restos","_espera","_syncro",
 
 				_syncro = false;
 
-			};	
+			};
 		};
 
 		if (_syncro) then {
@@ -477,7 +478,7 @@ private ["_cadena","_autRingtone","_probabilidad","_restos","_espera","_syncro",
 
 		if (_probabilidad <= 1) then {
 
-			_restos = "Land_HelipadEmpty_F" createVehicle _posicion;  
+			_restos = "Land_HelipadEmpty_F" createVehicle _posicion;
 
 			_espera = floor(random 10);
 
@@ -518,7 +519,7 @@ private ["_probabilidad","_ied","_tipoMetralla","_explosion","_posicion","_tipod
 		} forEach _hombres;
 
 		[[_posicion,_maxAfecDistancia] , "EODS_EFECTOS_JUGADOR", true, false] spawn BIS_fnc_MP;
-	
+
 		//[[_posicion,_ied] , "EODS_EFECTOS_GENERAL", true, false] spawn BIS_fnc_MP;
 
 		_explosion = createVehicle [_tipodebomba, position _ied, [], 0, "CAN_COLLIDE"];
@@ -535,7 +536,7 @@ FNC_EODS_METRALLA = {
 	_metralla = _this select 2;
 
 		for "_i" from 0 to _fragmentos - 1 do{
-			_pos set[2,.1 + random 2]; 
+			_pos set[2,.1 + random 2];
 			_bullet = _metralla createVehicle _pos;
 			_angle = random 360;
 			_speed = 450 + random 100;
@@ -545,7 +546,7 @@ FNC_EODS_METRALLA = {
 };
 
 FNC_EODS_CAIDA = {
-	
+
 	private["_estadoAnimacion","_sujeto","_tipodearma","_armaactual","_pistola","_armaprimaria","_armasecundaria","_animacionSeleccionada"];
 
 	_sujeto = _this select 0;
@@ -559,26 +560,26 @@ FNC_EODS_CAIDA = {
 
 	 switch _armaactual do
 		{
-		case "": 
+		case "":
 			{
 			_tipodearma = 0;
 			};
-		case _pistola: 
+		case _pistola:
 			{
 			_tipodearma = 1;
 			};
-		case _armaprimaria: 
+		case _armaprimaria:
 			{
 			_tipodearma = 2;
 			};
-		case _armasecundaria: 
+		case _armasecundaria:
 			{
 			_tipodearma = 3;
 			};
 		default
 			{
 			_tipodearma = 0;
-			};	
+			};
 		};
 
 	sleep random (1);
@@ -589,28 +590,28 @@ FNC_EODS_CAIDA = {
 
 		switch _tipodearma do
 		{
-			case 0: 
+			case 0:
 			{
 				_animacionSeleccionada = EODS_caida_sinarma select floor random count EODS_caida_sinarma;
 				[[_sujeto,_animacionSeleccionada], "FNC_EODS_SWITCHMOVE", true, false] spawn BIS_fnc_MP;
 
 			};
-			case 1: 
+			case 1:
 			{
 				_animacionSeleccionada = EODS_caida_pistol select floor random count EODS_caida_pistol;
 				[[_sujeto,_animacionSeleccionada], "FNC_EODS_SWITCHMOVE", true, false] spawn BIS_fnc_MP;
 			};
-			case 2: 
+			case 2:
 			{
 				_animacionSeleccionada = EODS_caida_rifle select floor random count EODS_caida_rifle;
 				[[_sujeto,_animacionSeleccionada], "FNC_EODS_SWITCHMOVE", true, false] spawn BIS_fnc_MP;
 			};
-			case 3: 
+			case 3:
 			{
 				_animacionSeleccionada = EODS_caida_at select floor random count EODS_caida_at;
 				[[_sujeto,_animacionSeleccionada], "FNC_EODS_SWITCHMOVE", true, false] spawn BIS_fnc_MP;
 			};
-						
+
 		};
 
 	};

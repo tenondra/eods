@@ -1,36 +1,29 @@
 class CfgPatches
 {
-	class EODS_module
-	{
-		units[]=
-		{
-			
-			"EODS_MISSION_MODULE"
-		};
-		weapons[]=
-		{
-			
-		};
-		requiredVersion=1;
-		requiredAddons[]=
-		{
-			"CBA_XEH",
-			"CBA_MAIN",
-			"A3_UI_F"
-		};
-		author[]=
-		{
-			"Burnes"
-		};
-		versionDesc="[EODS] 0.0.7";
-		version="0.0.7";
-		magazines[]={};
-		ammo[]={};
+
+	class EODS_module {
+		// Meta information for editor
+		name = "EODS_module";
+		author = "Me";
+
+
+		// Minimum compatible version. When the game's version is lower, pop-up warning will appear when launching the game.
+		requiredVersion = 1.60;
+		// Required addons, used for setting load order.
+		// When any of the addons is missing, pop-up warning will appear when launching the game.
+		requiredAddons[] = {
+					"CBA_XEH",
+					"CBA_MAIN",
+					"A3_UI_F"};
+		// List of objects (CfgVehicles classes) contained in the addon. Important also for Zeus content unlocking.
+		units[] = {"EODS_MISSION_MODULE"};
+		// List of weapons (CfgWeapons classes) contained in the addon.
+		weapons[] = {};
 	};
 };
 class cfgVehicles
 {
-	
+
 	class Logic;
 	class Module_F: Logic
 	{
@@ -62,28 +55,28 @@ class cfgVehicles
                 typeName = "NUMBER";
                 defaultValue = 30;
             };
-			
+
 			class numberOfDuds {
                 displayName = "Number of random objects without IEDs";
                 description = "Will determine the number of objects on the map that do not contain IEDs";
                 typeName = "NUMBER";
                 defaultValue = 50;
             };
-			
+
 			class numberOfMines {
                 displayName = "Number of mines";
                 description = "Will determine the number of mines on the map";
                 typeName = "NUMBER";
                 defaultValue = 50;
             };
-			
+
 			class triggerManClasses
                         {
                                 displayName = "Triggerman Classes";
                                 description = "enter the classnames of trigger men for IEDs, separate with a comma (,). if left blank default civilian will be used";
                                 defaultValue = "";
                         };
-						
+
 			class safeZoneRadius
 			{
 					displayName = "Safe Zone Radius";
@@ -91,7 +84,7 @@ class cfgVehicles
 					typeName = "NUMBER";
 					defaultValue = 500;
 			};
-			
+
 			class debug {
                 displayName = "Debug Mode";
                 description = "Will give hints about the module showing its activities";
@@ -109,9 +102,8 @@ class cfgVehicles
 			init="if (isServer) then {_ok = _this execVM '\EODS_module\iedInit.sqf';};";
 		};
 	};
-	
-	
-	
-	
-};
 
+
+
+
+};

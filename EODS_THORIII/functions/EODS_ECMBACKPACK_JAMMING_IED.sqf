@@ -1,13 +1,22 @@
 /*
  	Name: [EODS] EXPLOSIVE ORDNANCE DISPOSAL SUITE
- 	
- 	Author(s): Monovdd (Carlos Alberto Arango Schütz)
+
+ 	Author(s): Monovdd (Carlos Alberto Arango Schï¿½tz)
 
  	Note: Do not modify this file without permission.
-	
+
 	Licence: http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-
+//
+//
+//
+//
+// DEPRACATED SEE : EODS_ieds/PCU/EODS_PCU_JAMMING_IED!!!!
+//
+//
+//
+//
+//
 private ["_player","_ied","_distance","_calculoJammeoHecho","_probabilidad","_chance","_iedsJammeados","_distanceAlIed","_jammer"];
 
 	EODS_IEDS_ECM_JAMMER_ACTIVE = true;
@@ -30,15 +39,19 @@ private ["_player","_ied","_distance","_calculoJammeoHecho","_probabilidad","_ch
 
 	_playereJammeados = [];
 
-while {EODS_IEDS_ECM_JAMMER_ACTIVE} do 
+while {EODS_IEDS_ECM_JAMMER_ACTIVE} do
 {
 
 	//_posiblesJugadores = {isPlayer _x} count playableUnits;
 
 	_posiblesJugadores = playableUnits;
 
-	_posiblesIEDs = nearestObjects [_player, ["EODS_base_ied_cellphone"], _distance];
-	
+	//_posiblesIEDs = nearestObjects [_player, ["EODS_base_ied_cellphone"], _distance];
+	_posiblesIEDs player nearObjects ["EODS_base_ied_cellphone", 75];
+	//Debug start
+	_textvar = _posiblesIEDs;
+	_textvar remoteExec ["hint", 0];
+	//Debug end
 	if (count _posiblesIEDs > 0) then {
 
 		{
@@ -49,10 +62,10 @@ while {EODS_IEDS_ECM_JAMMER_ACTIVE} do
 				_calculoJammeoHecho = false;
 			};
 
-			if (!_calculoJammeoHecho) then {		
+			if (!_calculoJammeoHecho) then {
 
 
-					_x setVariable ["EODS_Ied_jammed", true, true];	
+					_x setVariable ["EODS_Ied_jammed", true, true];
 
 					_x setVariable ["EODS_Ied_calculo_jammeo_hecho", true, true];
 
@@ -72,7 +85,7 @@ while {EODS_IEDS_ECM_JAMMER_ACTIVE} do
 
 				_iedsJammeados = _iedsJammeados - [_x];
 
-				_x setVariable ["EODS_Ied_jammed", false, true];	
+				_x setVariable ["EODS_Ied_jammed", false, true];
 
 				_x setVariable ["EODS_Ied_calculo_jammeo_hecho", false, true];
 
@@ -120,13 +133,14 @@ while {EODS_IEDS_ECM_JAMMER_ACTIVE} do
 
 					//_x setVariable ["EODS_Ied_Radio_Jam", false, true];
 
-					_playereJammeados = _playereJammeados - [_x];					
+					_playereJammeados = _playereJammeados - [_x];
 				};
-			};			
+			};
 
 		} forEach _posiblesJugadores;
 
-	};	
+	};
+	//Debug
 
 	sleep 0.5;
 };
@@ -136,7 +150,7 @@ if (count _iedsJammeados > 0) then {
 	{
 		_iedsJammeados = _iedsJammeados - [_x];
 
-		_x setVariable ["EODS_Ied_jammed", false, true];	
+		_x setVariable ["EODS_Ied_jammed", false, true];
 
 		_x setVariable ["EODS_Ied_calculo_jammeo_hecho", false, true];
 
@@ -152,7 +166,7 @@ if (count _playereJammeados > 0) then {
 
 		//_x setVariable ["EODS_Ied_Radio_Jam", false, true];
 
-		_playereJammeados = _playereJammeados - [_x];	
+		_playereJammeados = _playereJammeados - [_x];
 
 	} forEach _playereJammeados;
 };
